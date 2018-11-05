@@ -46,4 +46,13 @@ def item(id):
             return jsonify(task.serialize())
         else:
             return Response(status=404)
-
+    elif request.method == 'PUT':
+        task = Task.query.get(id)
+        if task:
+            task.title = request.json['title']
+            task.content = request.json['content']
+            db.session.add(task)
+            db.session.commit()
+            return Response(status=200)
+        else:
+            return Response(status=400)
