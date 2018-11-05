@@ -38,10 +38,12 @@ def items():
     response.status_code = 201
     return response
 
-@app.route('/items/<int:id>')
+@app.route('/items/<int:id>', methods=['GET','PUT', 'DELETE'])
 def item(id):
-    for task in mocked_tasks:
-        if task["id"] == id:
-            return jsonify(task)
-    else:
-        return Response(status=404)
+    if request.method == 'GET':
+        task = Task.query.get(id)
+        if task:
+            return jsonify(task.serialize())
+        else:
+            return Response(status=404)
+
