@@ -1,6 +1,6 @@
 from flask import jsonify, Response, request
 from datetime import datetime
-from . import app
+from . import app, db
 from .models.task import Task
 from .mock_items import mocked_tasks
 
