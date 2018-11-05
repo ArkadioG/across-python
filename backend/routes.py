@@ -1,7 +1,6 @@
 from backend import app
 from flask import jsonify
-
-
+from .mock_items import mocked_tasks
 
 @app.route('/')
 def home():
@@ -18,3 +17,8 @@ def contact():
     }
 
     return jsonify(author_data)
+
+
+@app.route('/items')
+def items():
+    return jsonify(mocked_tasks)
