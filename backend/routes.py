@@ -56,3 +56,11 @@ def item(id):
             return Response(status=200)
         else:
             return Response(status=400)
+    else:
+        task = Task.query.get(id)
+        if task:
+            db.session.delete(task)
+            db.session.commit()
+            return Response()
+        else:
+            return Response(status=404)
