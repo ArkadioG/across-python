@@ -1,7 +1,8 @@
-from backend import app
 from flask import jsonify, Response, request
-from .mock_items import mocked_tasks
 from datetime import datetime
+from . import app
+from .models.task import Task
+from .mock_items import mocked_tasks
 
 @app.route('/')
 def home():
@@ -23,7 +24,8 @@ def contact():
 @app.route('/items', methods=['GET', 'POST'])
 def items():
     if request.method == 'GET':
-        return jsonify(mocked_tasks)
+        tasks = [task.serialize() for task in Task.query.all()]
+        return jsonify(tasks)
 
     # POST
     new_task = {'title': request.json['title'],
