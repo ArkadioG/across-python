@@ -1,6 +1,7 @@
 from backend import app
-from flask import jsonify, Response
+from flask import jsonify, Response, request
 from .mock_items import mocked_tasks
+from datetime import datetime
 
 @app.route('/')
 def home():
@@ -19,9 +20,17 @@ def contact():
     return jsonify(author_data)
 
 
-@app.route('/items')
+@app.route('/items', methods=['GET', 'POST'])
 def items():
-    return jsonify(mocked_tasks)
+    if request.method == 'GET':
+        return jsonify(mocked_tasks)
+
+    # POST
+    new_task = {'title': request.json['title'],
+                'content': request.json['content'],
+                'createdOn': datetime.utcnow()}
+
+    return jsonify(new_task)
 
 
 @app.route('/items/<int:id>')
