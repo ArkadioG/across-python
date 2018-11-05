@@ -1,5 +1,5 @@
 from backend import app
-from flask import jsonify
+from flask import jsonify, Response
 from .mock_items import mocked_tasks
 
 @app.route('/')
@@ -22,3 +22,12 @@ def contact():
 @app.route('/items')
 def items():
     return jsonify(mocked_tasks)
+
+
+@app.route('/items/<int:id>')
+def item(id):
+    for task in mocked_tasks:
+        if task["id"] == id:
+            return jsonify(task)
+    else:
+        return Response(status=404)
