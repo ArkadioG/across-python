@@ -28,12 +28,15 @@ def items():
         return jsonify(tasks)
 
     # POST
-    new_task = {'title': request.json['title'],
-                'content': request.json['content'],
-                'createdOn': datetime.utcnow()}
+    new_task = Task(title=request.json['title'],
+                    content=request.json['content'])
+    db.session.add(new_task)
+    db.session.commit()
 
-    return jsonify(new_task)
-
+    response = jsonify(new_task.serialize())
+    response.headers['Location'] = f"/items/{new_task.task_id}"
+    response.status_code = 201
+    return response
 
 @app.route('/items/<int:id>')
 def item(id):
