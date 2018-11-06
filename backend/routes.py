@@ -55,7 +55,7 @@ def item(id):
             db.session.commit()
             return Response(status=200)
         else:
-            return Response(status=400)
+            return Response(status=404)
     else:
         task = Task.query.get(id)
         if task:

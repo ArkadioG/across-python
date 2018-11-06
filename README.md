@@ -26,3 +26,7 @@ on 6th of November, at 18.00 CET.
 Recorded episode will be available right after live in Facebook, and within few days will be available 
 on [infoShare Academy Youtube channel](https://www.youtube.com/channel/UC5wCWXYVEXlQ8Fay9UcF7bw).
  
+ ## Postman
+ Postman API collection is available [here](https://documenter.getpostman.com/view/3092253/RzZ6L1jd),
+  if you want to get that collection into your Postman app (so you can call backend with it),
+  just click **Run in Postman** button.
