@@ -1,7 +1,7 @@
 # across-python
 
 Code created during second episode of ["Across Stack" webinar](https://www.facebook.com/events/1944578742303204/) series
-created by Michał Michalczuk.
+created by [Michał Michalczuk](https://michalczukm.xyz/).
 
 During second episode, Michal's guest - [Arek Gutkowski](https://www.linkedin.com/in/arkadiuszgutkowski/), 
 Python Developer at PGS Software, will develop in Python and Flask backend part of 
